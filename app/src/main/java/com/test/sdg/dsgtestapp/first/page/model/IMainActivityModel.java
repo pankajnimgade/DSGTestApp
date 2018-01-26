@@ -12,6 +12,10 @@ public interface IMainActivityModel {
 
     void setPresenter(MainActivityPresenter presenter);
 
+    void setFavoriteVenueID(String favoriteVenueID);
+
+    String getFavoriteVenueID();
+
     interface VenueCollection {
 
         void getVenueCollection(String responseText);

@@ -1,4 +1,4 @@
-package com.test.sdg.dsgtestapp.network.calls;
+package com.test.sdg.dsgtestapp.dsg.app.network.calls;
 
 import com.test.sdg.dsgtestapp.first.page.model.IMainActivityModel;
 

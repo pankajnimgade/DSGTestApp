@@ -1,6 +1,5 @@
 package com.test.sdg.dsgtestapp.first.page.view;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
@@ -28,11 +27,11 @@ import java.util.List;
 
 public class VenueAdapter extends RecyclerView.Adapter<VenueAdapter.VenueViewHolder> {
 
-    private Context context;
+    private MainActivity context;
     private List<Venue> venues;
     private LayoutInflater layoutInflater;
 
-    public VenueAdapter(Context context, List<Venue> venues) {
+    public VenueAdapter(MainActivity context, List<Venue> venues) {
         this.context = context;
         this.venues = venues;
         this.layoutInflater = LayoutInflater.from(this.context);
@@ -80,6 +79,7 @@ public class VenueAdapter extends RecyclerView.Adapter<VenueAdapter.VenueViewHol
                 if (isChecked) {
                     Venue.Companion.setFavoriteVenueId(venue.getId());
                     Venue.Companion.setHasFavorite(true);
+                    context.favoriteVenue(Venue.Companion.getFavoriteVenueId());
                     notifyDataSetChanged();
                 }
             }
@@ -108,6 +108,11 @@ public class VenueAdapter extends RecyclerView.Adapter<VenueAdapter.VenueViewHol
             ratingTextView = itemView.findViewById(R.id.single_venue_in_list_rating_textView);
             favoriteCheckBox = itemView.findViewById(R.id.single_venue_in_list_favorite_checkBox);
         }
+    }
+
+    interface FavoriteVenue {
+
+        void favoriteVenue(String favoriteVenueID);
     }
 
 }

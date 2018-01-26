@@ -35,4 +35,11 @@ public class MainActivityPresenter {
     }
 
 
+    public void saveFavoriteStoreID(String favoriteVenueID) {
+        model.setFavoriteVenueID(favoriteVenueID);
+    }
+
+    public String getVenueID() {
+        return model.getFavoriteVenueID();
+    }
 }

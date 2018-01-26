@@ -10,7 +10,7 @@ import com.test.sdg.dsgtestapp.first.page.model.Venue
 import com.test.sdg.dsgtestapp.first.page.presenter.MainActivityPresenter
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), VenueAdapter.FavoriteVenue {
 
     private val TAG = "MainActivity"
 
@@ -43,6 +43,10 @@ class MainActivity : AppCompatActivity() {
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = venueAdapter
         venueAdapter.notifyDataSetChanged()
+    }
+
+    override fun favoriteVenue(favoriteVenueID: String?) {
+        presenter.saveFavoriteStoreID(favoriteVenueID)
     }
 }
 

@@ -3,7 +3,9 @@ package com.test.sdg.dsgtestapp.first.page.model;
 import android.util.Log;
 
 import com.google.gson.Gson;
-import com.test.sdg.dsgtestapp.network.calls.GetData;
+import com.test.sdg.dsgtestapp.dsg.app.StartUp;
+import com.test.sdg.dsgtestapp.dsg.app.network.calls.GetData;
+import com.test.sdg.dsgtestapp.dsg.app.preferences.FavoriteVenuePreference;
 import com.test.sdg.dsgtestapp.first.page.presenter.MainActivityPresenter;
 
 import java.util.ArrayList;
@@ -18,10 +20,16 @@ public class MainActivityModel implements IMainActivityModel, IMainActivityModel
 
     private MainActivityPresenter presenter;
 
+    private FavoriteVenuePreference preference;
+
+    public MainActivityModel() {
+        preference = StartUp.getPreference();
+    }
 
     public void setPresenter(MainActivityPresenter presenter) {
         this.presenter = presenter;
     }
+
 
     @Override
     public void callVenueCollection(String url) {
@@ -35,5 +43,15 @@ public class MainActivityModel implements IMainActivityModel, IMainActivityModel
         ArrayList<Venue> venues = (new Gson().fromJson(responseText, Response.class)).getVenues();
         presenter.setVenueCollection(venues);
         System.out.println(venues);
+    }
+
+    @Override
+    public void setFavoriteVenueID(String favoriteVenueID) {
+        preference.saveVenueId(favoriteVenueID);
+    }
+
+    @Override
+    public String getFavoriteVenueID() {
+        return preference.getVenueID();
     }
 }
