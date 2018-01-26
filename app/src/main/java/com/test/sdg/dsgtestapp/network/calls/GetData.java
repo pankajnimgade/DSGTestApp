@@ -2,11 +2,12 @@ package com.test.sdg.dsgtestapp.network.calls;
 
 import android.os.AsyncTask;
 
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request;
 import com.test.sdg.dsgtestapp.first.page.model.IMainActivityModel;
 
 import java.io.IOException;
+
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
 
 /**
  * Created by Pankaj Nimgade on 1/25/2018.

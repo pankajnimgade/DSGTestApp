@@ -1,6 +1,10 @@
 package com.test.sdg.dsgtestapp.first.page.view;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.LayerDrawable;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,10 +12,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.test.sdg.dsgtestapp.R;
 import com.test.sdg.dsgtestapp.first.page.model.Venue;
+import com.test.sdg.dsgtestapp.venue.page.view.VenueActivity;
 
 import java.util.List;
 
@@ -43,10 +48,20 @@ public class VenueAdapter extends RecyclerView.Adapter<VenueAdapter.VenueViewHol
         holder.nameTextView.setText(venue.getName());
         holder.ratingBar.setRating(venue.getRating() / 2);
         holder.ratingTextView.setText(venue.getRating() + "");
-        holder.nameTextView.setOnClickListener(new View.OnClickListener() {
+        LayerDrawable stars = (LayerDrawable) holder.ratingBar.getProgressDrawable();
+        if (venue.getRatingColor() != null && !venue.getRatingColor().isEmpty()) {
+            stars.getDrawable(2).setColorFilter(
+                    Color.parseColor("#" + venue.getRatingColor()), PorterDuff.Mode.SRC_ATOP);
+        } else {
+            stars.getDrawable(2).setColorFilter(
+                    Color.parseColor("#cacaca"), PorterDuff.Mode.SRC_ATOP);
+        }
+        holder.rootLayoutCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context,"clicked", Toast.LENGTH_SHORT).show();
+                Intent venueActivityIntent = new Intent(context, VenueActivity.class);
+                venueActivityIntent.putExtra(VenueActivity.EXTRA_KEY_TAG, (new Gson()).toJson(venue));
+                context.startActivity(venueActivityIntent);
             }
         });
     }

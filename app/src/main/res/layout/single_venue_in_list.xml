@@ -1,27 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
     android:id="@+id/single_venue_in_list_name_root_CardView"
+    android:layout_width="match_parent"
+    android:clickable="true"
+    android:focusable="true"
     android:layout_height="wrap_content">
 
     <android.support.v7.widget.GridLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
+        android:clickable="false"
+        android:focusable="false"
+        android:duplicateParentState="true"
         app:columnCount="2"
         app:rowCount="2">
-
 
         <TextView
             android:id="@+id/single_venue_in_list_name_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:duplicateParentState="true"
             android:gravity="left"
+            android:focusable="false"
+            android:clickable="false"
             android:text="TextView"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
             app:layout_column="0"
-
             app:layout_columnSpan="2"
             app:layout_row="0" />
 
@@ -29,12 +35,14 @@
             android:id="@+id/single_venue_in_list_ratingBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:clickable="false"
-            android:max="10"
-            android:numStars="5"
-            android:focusable="false"
             android:isIndicator="true"
+            android:max="10"
+            android:focusable="false"
+            android:clickable="false"
+            android:numStars="5"
+            android:duplicateParentState="true"
             android:stepSize="0.1"
+            android:theme="@style/RatingBar"
             app:layout_column="0"
             app:layout_row="1" />
 
@@ -42,7 +50,10 @@
             android:id="@+id/single_venue_in_list_rating_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:duplicateParentState="true"
             app:layout_column="1"
+            android:focusable="false"
+            android:clickable="false"
             app:layout_gravity="center"
             app:layout_row="1" />
     </android.support.v7.widget.GridLayout>
