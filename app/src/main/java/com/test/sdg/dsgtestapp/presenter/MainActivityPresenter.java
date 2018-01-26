@@ -18,6 +18,11 @@ public class MainActivityPresenter {
 
     public MainActivityPresenter(IMainActivityModel model) {
         this.model = model;
+        this.model.setPresenter(this);
+    }
+
+    public void setView(MainActivity view) {
+        this.view = view;
     }
 
     public void requestData(String url) {
@@ -26,6 +31,7 @@ public class MainActivityPresenter {
 
     public void setVenueCollection(List<Venue> venueList) {
         System.out.println(venueList);
+        this.view.loadInformation(venueList);
     }
 
 

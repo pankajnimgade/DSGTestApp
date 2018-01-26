@@ -3,7 +3,7 @@ package com.test.sdg.dsgtestapp.model
 /**
  * Created by Pankaj Nimgade on 1/25/2018.
  */
-class Location(val address: String,
+data class Location(val address: String,
                val latitude: String,
                val longitude: String,
                val postalCode: String,

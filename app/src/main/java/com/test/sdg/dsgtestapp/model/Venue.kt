@@ -3,7 +3,7 @@ package com.test.sdg.dsgtestapp.model
 /**
  * Created by Pankaj Nimgade on 1/25/2018.
  */
-class Venue(val id: String,
+data class Venue(val id: String,
             val name: String,
             val canonicalUrl: String,
             val verified: String,
