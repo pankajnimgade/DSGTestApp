@@ -6,10 +6,14 @@ import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import com.test.sdg.dsgtestapp.R
+import com.test.sdg.dsgtestapp.model.MainActivityModel
+import com.test.sdg.dsgtestapp.presenter.MainActivityPresenter
 
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+
+    private val presenter = MainActivityPresenter(MainActivityModel())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,6 +24,11 @@ class MainActivity : AppCompatActivity() {
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        presenter.requestData("https://movesync-qa.dcsg.com/dsglabs/mobile/api/venue/")
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
