@@ -19,4 +19,9 @@ data class Venue(val id: String,
                  val contacts: List<Contact>,
                  val photos: List<Photo>,
                  var isFavorite: Boolean
-)
+) {
+    companion object {
+        var favoriteVenueId = ""
+        var hasFavorite = false
+    }
+}

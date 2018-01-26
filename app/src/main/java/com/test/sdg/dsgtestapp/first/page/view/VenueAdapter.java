@@ -10,6 +10,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -64,6 +66,24 @@ public class VenueAdapter extends RecyclerView.Adapter<VenueAdapter.VenueViewHol
                 context.startActivity(venueActivityIntent);
             }
         });
+
+        if (Venue.Companion.getHasFavorite()) {
+            if (Venue.Companion.getFavoriteVenueId().equals(venue.getId())) {
+                holder.favoriteCheckBox.setChecked(true);
+            } else {
+                holder.favoriteCheckBox.setChecked(false);
+            }
+        }
+        holder.favoriteCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    Venue.Companion.setFavoriteVenueId(venue.getId());
+                    Venue.Companion.setHasFavorite(true);
+                    notifyDataSetChanged();
+                }
+            }
+        });
     }
 
     @Override
@@ -78,6 +98,7 @@ public class VenueAdapter extends RecyclerView.Adapter<VenueAdapter.VenueViewHol
         private TextView nameTextView;
         private RatingBar ratingBar;
         private TextView ratingTextView;
+        private CheckBox favoriteCheckBox;
 
         public VenueViewHolder(View itemView) {
             super(itemView);
@@ -85,6 +106,7 @@ public class VenueAdapter extends RecyclerView.Adapter<VenueAdapter.VenueViewHol
             nameTextView = itemView.findViewById(R.id.single_venue_in_list_name_textView);
             ratingBar = itemView.findViewById(R.id.single_venue_in_list_ratingBar);
             ratingTextView = itemView.findViewById(R.id.single_venue_in_list_rating_textView);
+            favoriteCheckBox = itemView.findViewById(R.id.single_venue_in_list_favorite_checkBox);
         }
     }
 
