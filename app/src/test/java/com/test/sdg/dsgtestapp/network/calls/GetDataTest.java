@@ -1,6 +1,6 @@
 package com.test.sdg.dsgtestapp.network.calls;
 
-import com.test.sdg.dsgtestapp.model.IMainActivityModel;
+import com.test.sdg.dsgtestapp.first.page.model.IMainActivityModel;
 
 import org.junit.Test;
 

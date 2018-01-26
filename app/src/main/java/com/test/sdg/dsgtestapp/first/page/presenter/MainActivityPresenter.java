@@ -1,8 +1,8 @@
-package com.test.sdg.dsgtestapp.presenter;
+package com.test.sdg.dsgtestapp.first.page.presenter;
 
-import com.test.sdg.dsgtestapp.model.IMainActivityModel;
-import com.test.sdg.dsgtestapp.model.Venue;
-import com.test.sdg.dsgtestapp.view.MainActivity;
+import com.test.sdg.dsgtestapp.first.page.model.IMainActivityModel;
+import com.test.sdg.dsgtestapp.first.page.model.Venue;
+import com.test.sdg.dsgtestapp.first.page.view.MainActivity;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
-package com.test.sdg.dsgtestapp.model;
+package com.test.sdg.dsgtestapp.first.page.model;
 
-import com.test.sdg.dsgtestapp.presenter.MainActivityPresenter;
+import com.test.sdg.dsgtestapp.first.page.presenter.MainActivityPresenter;
 
 /**
  * Created by Pankaj Nimgade on 1/25/2018.

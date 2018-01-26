@@ -1,4 +1,4 @@
-package com.test.sdg.dsgtestapp.model;
+package com.test.sdg.dsgtestapp.first.page.model;
 
 import com.google.gson.annotations.SerializedName;
 

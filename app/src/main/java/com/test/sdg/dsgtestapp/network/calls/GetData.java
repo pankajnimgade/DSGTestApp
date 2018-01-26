@@ -4,7 +4,7 @@ import android.os.AsyncTask;
 
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
-import com.test.sdg.dsgtestapp.model.IMainActivityModel;
+import com.test.sdg.dsgtestapp.first.page.model.IMainActivityModel;
 
 import java.io.IOException;
 

@@ -1,4 +1,4 @@
-package com.test.sdg.dsgtestapp.model
+package com.test.sdg.dsgtestapp.first.page.model
 
 /**
  * Created by Pankaj Nimgade on 1/25/2018.
@@ -10,7 +10,7 @@ data class Venue(val id: String,
             val url: String,
             val ratingColor: String,
             val ratingSignals: String,
-            val rating: String,
+            val rating: Float,
             val description: String,
             val storeId: String,
             val shortUrl: String,

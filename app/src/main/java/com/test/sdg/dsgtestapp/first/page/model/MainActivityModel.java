@@ -1,10 +1,10 @@
-package com.test.sdg.dsgtestapp.model;
+package com.test.sdg.dsgtestapp.first.page.model;
 
 import android.util.Log;
 
 import com.google.gson.Gson;
 import com.test.sdg.dsgtestapp.network.calls.GetData;
-import com.test.sdg.dsgtestapp.presenter.MainActivityPresenter;
+import com.test.sdg.dsgtestapp.first.page.presenter.MainActivityPresenter;
 
 import java.util.ArrayList;
 
