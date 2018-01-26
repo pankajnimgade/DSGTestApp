@@ -1,5 +1,9 @@
 package com.test.sdg.dsgtestapp.venue.page.view;
 
+import com.test.sdg.dsgtestapp.first.page.model.Contact;
+
+import java.util.List;
+
 /**
  * Created by Pankaj Nimgade on 1/26/2018.
  */
@@ -16,7 +20,7 @@ public interface IVenueActivity {
 
     void setAddress(String address);
 
-    void setContactDetails(String contactDetails);
+    void setContactDetails(List<Contact> contactList);
 
     void setRatingBarColor(String ratingColor);
 }

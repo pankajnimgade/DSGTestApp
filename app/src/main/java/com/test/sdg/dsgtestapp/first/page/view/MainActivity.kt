@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
 
     fun loadInformation(venueList: List<Venue>) {
         val venueAdapter = VenueAdapter(this, venueList)
-        val layoutManager = LinearLayoutManager(applicationContext)
+        val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = venueAdapter
         venueAdapter.notifyDataSetChanged()

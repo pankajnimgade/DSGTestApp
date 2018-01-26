@@ -2,6 +2,7 @@ package com.test.sdg.dsgtestapp.venue.page.model;
 
 import android.util.Log;
 
+import com.test.sdg.dsgtestapp.first.page.model.Location;
 import com.test.sdg.dsgtestapp.first.page.model.Photo;
 import com.test.sdg.dsgtestapp.first.page.model.Venue;
 import com.test.sdg.dsgtestapp.venue.page.presenter.VenueActivityPresenter;
@@ -71,22 +72,39 @@ public class VenueActivityModel {
         }
     }
 
-    private void populateRatingColor(){
+    private void populateRatingColor() {
         if (venue.getRatingColor() != null && !venue.getRatingColor().isEmpty()) {
-            Log.d(TAG, "populateRatingColor: "+venue.getRatingColor());
+            Log.d(TAG, "populateRatingColor: " + venue.getRatingColor());
             presenter.setRatingBarColor(venue.getRatingColor());
         }
     }
 
     private void populateURL() {
-
+        if (venue.getUrl() != null && !venue.getUrl().isEmpty()) {
+            presenter.setURL(venue.getUrl());
+        }
     }
 
     private void populateAddress() {
-
+        if (venue.getLocation() != null) {
+            StringBuilder addressBuilder = new StringBuilder();
+            Location location = venue.getLocation();
+            addressBuilder.append((location.getAddress() == null) ? "" : location.getAddress() + "\n");
+            addressBuilder.append((location.getPostalCode() == null) ? "" : location.getPostalCode() + "\n");
+            addressBuilder.append((location.getCity() == null) ? "" : location.getCity() + "\n");
+            addressBuilder.append((location.getState() == null) ? "" : location.getState() + "\n");
+            addressBuilder.append((location.getCountry() == null) ? "" : location.getCountry() + "\n");
+            String address = addressBuilder.toString();
+            if (address != null && !address.isEmpty()) {
+                presenter.setAddress(address);
+            }
+        }
     }
 
     private void populateContactDetails() {
+        if (venue.getContacts() != null && venue.getContacts().size() > 0) {
+            presenter.setContactDetails(venue.getContacts());
+        }
     }
 
 

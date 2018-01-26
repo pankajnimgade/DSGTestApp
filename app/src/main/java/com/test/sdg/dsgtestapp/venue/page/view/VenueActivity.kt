@@ -1,26 +1,26 @@
 package com.test.sdg.dsgtestapp.venue.page.view
 
 import android.graphics.Color
-import android.graphics.ColorFilter
+import android.graphics.PorterDuff
+import android.graphics.drawable.LayerDrawable
 import android.os.Bundle
-import android.support.v4.graphics.drawable.DrawableCompat
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
+import android.text.SpannableString
+import android.text.style.UnderlineSpan
+import android.util.Log
 import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
 import com.google.gson.Gson
 import com.squareup.picasso.Picasso
 import com.test.sdg.dsgtestapp.R
+import com.test.sdg.dsgtestapp.first.page.model.Contact
 import com.test.sdg.dsgtestapp.first.page.model.Venue
 import com.test.sdg.dsgtestapp.venue.page.model.VenueActivityModel
 import com.test.sdg.dsgtestapp.venue.page.presenter.VenueActivityPresenter
 import kotlinx.android.synthetic.main.activity_venue.*
-import android.graphics.PorterDuff
-import android.graphics.drawable.Drawable
-import android.graphics.drawable.DrawableContainer
-import android.graphics.drawable.LayerDrawable
-import android.support.v7.graphics.drawable.DrawableWrapper
-import android.util.Log
 
 
 class VenueActivity : AppCompatActivity(), IVenueActivity {
@@ -33,7 +33,7 @@ class VenueActivity : AppCompatActivity(), IVenueActivity {
     private lateinit var ratingValueTextView: TextView
     private lateinit var urlTextView: TextView
     private lateinit var addressTextView: TextView
-    private lateinit var contactDetailsTextView: TextView
+    private lateinit var recyclerViewContactList: RecyclerView
 
     companion object {
         const val EXTRA_KEY_TAG = "VenueActivity_EXTRA"
@@ -56,7 +56,7 @@ class VenueActivity : AppCompatActivity(), IVenueActivity {
         ratingValueTextView = findViewById(R.id.VenueActivity_rating_value_TextView)
         urlTextView = findViewById(R.id.VenueActivity_url_TextView)
         addressTextView = findViewById(R.id.VenueActivity_address_TextView)
-        contactDetailsTextView = findViewById(R.id.VenueActivity_contact_details_TextView)
+        recyclerViewContactList = findViewById(R.id.VenueActivity_contact_list_RecyclerView)
     }
 
     override fun onResume() {
@@ -71,6 +71,7 @@ class VenueActivity : AppCompatActivity(), IVenueActivity {
         val stars = ratingBar.progressDrawable as LayerDrawable
         stars.getDrawable(2).setColorFilter(Color.parseColor("#cacaca"), PorterDuff.Mode.SRC_ATOP)
     }
+
     override fun setPhoto(photoURL: String) {
         Picasso.with(applicationContext).load(photoURL).into(photo)
     }
@@ -91,14 +92,20 @@ class VenueActivity : AppCompatActivity(), IVenueActivity {
     }
 
     override fun setURL(url: String) {
-        urlTextView.text = url
+        val content = SpannableString(url)
+        content.setSpan(UnderlineSpan(), 0, content.length, 0)
+        urlTextView.text = content
     }
 
     override fun setAddress(address: String) {
         addressTextView.text = address
     }
 
-    override fun setContactDetails(contactDetails: String) {
-        addressTextView.text = contactDetails
+    override fun setContactDetails(contactList: List<Contact>) {
+        val layoutManager = LinearLayoutManager(applicationContext)
+        recyclerViewContactList.layoutManager = layoutManager
+        val contactAdapter = ContactAdapter(applicationContext, contactList)
+        recyclerViewContactList.adapter = contactAdapter
+        contactAdapter.notifyDataSetChanged()
     }
 }

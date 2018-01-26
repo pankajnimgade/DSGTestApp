@@ -2,10 +2,13 @@ package com.test.sdg.dsgtestapp.venue.page.presenter;
 
 import android.util.Log;
 
+import com.test.sdg.dsgtestapp.first.page.model.Contact;
 import com.test.sdg.dsgtestapp.first.page.model.Venue;
 import com.test.sdg.dsgtestapp.venue.page.model.VenueActivityModel;
 import com.test.sdg.dsgtestapp.venue.page.view.IVenueActivity;
 import com.test.sdg.dsgtestapp.venue.page.view.VenueActivity;
+
+import java.util.List;
 
 
 /**
@@ -58,8 +61,8 @@ public class VenueActivityPresenter {
         view.setAddress(address);
     }
 
-    public void setContactDetails(String contactDetails) {
-        view.setContactDetails(contactDetails);
+    public void setContactDetails(List<Contact> contactList) {
+        view.setContactDetails(contactList);
     }
 }
 
