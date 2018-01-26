@@ -1,0 +1,1 @@
+Network call has been establish, but it uses android async task, due to which business logic won't be able to leverage JUnit for testing, Its needs to change to be independent of Android classes.
