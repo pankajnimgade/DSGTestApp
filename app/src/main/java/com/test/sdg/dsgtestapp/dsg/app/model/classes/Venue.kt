@@ -1,4 +1,4 @@
-package com.test.sdg.dsgtestapp.first.page.model
+package com.test.sdg.dsgtestapp.dsg.app.model.classes
 
 /**
  * Created by Pankaj Nimgade on 1/25/2018.
