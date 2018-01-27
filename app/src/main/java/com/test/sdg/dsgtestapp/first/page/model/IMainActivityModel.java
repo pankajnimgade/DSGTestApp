@@ -16,6 +16,8 @@ public interface IMainActivityModel {
 
     String getFavoriteVenueID();
 
+    void sortList();
+
     interface VenueCollection {
 
         void getVenueCollection(String responseText);

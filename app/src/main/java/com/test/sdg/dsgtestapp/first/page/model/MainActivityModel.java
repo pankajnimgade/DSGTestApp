@@ -4,8 +4,10 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 import com.test.sdg.dsgtestapp.dsg.app.StartUp;
+import com.test.sdg.dsgtestapp.dsg.app.model.classes.Response;
+import com.test.sdg.dsgtestapp.dsg.app.model.classes.Venue;
 import com.test.sdg.dsgtestapp.dsg.app.network.calls.GetData;
-import com.test.sdg.dsgtestapp.dsg.app.preferences.FavoriteVenuePreference;
+import com.test.sdg.dsgtestapp.dsg.app.preferences.DataPreference;
 import com.test.sdg.dsgtestapp.first.page.presenter.MainActivityPresenter;
 
 import java.util.ArrayList;
@@ -20,7 +22,7 @@ public class MainActivityModel implements IMainActivityModel, IMainActivityModel
 
     private MainActivityPresenter presenter;
 
-    private FavoriteVenuePreference preference;
+    private DataPreference preference;
 
     public MainActivityModel() {
         preference = StartUp.getPreference();
@@ -53,5 +55,10 @@ public class MainActivityModel implements IMainActivityModel, IMainActivityModel
     @Override
     public String getFavoriteVenueID() {
         return preference.getVenueID();
+    }
+
+    @Override
+    public void sortList() {
+
     }
 }

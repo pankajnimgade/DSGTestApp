@@ -1,9 +1,11 @@
 package com.test.sdg.dsgtestapp.dsg.app;
 
 import android.app.Application;
+import android.util.Log;
 
-import com.test.sdg.dsgtestapp.dsg.app.preferences.FavoriteVenuePreference;
-import com.test.sdg.dsgtestapp.first.page.model.Venue;
+import com.test.sdg.dsgtestapp.dsg.app.model.classes.Location;
+import com.test.sdg.dsgtestapp.dsg.app.model.classes.Venue;
+import com.test.sdg.dsgtestapp.dsg.app.preferences.DataPreference;
 
 /**
  * Created by Pankaj Nimgade on 1/26/2018.
@@ -11,14 +13,18 @@ import com.test.sdg.dsgtestapp.first.page.model.Venue;
 
 public class StartUp extends Application {
 
-    private static FavoriteVenuePreference preference;
+    private static final String TAG = StartUp.class.getSimpleName();
+
+    private static DataPreference preference;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        preference = new FavoriteVenuePreference(getApplicationContext());
+        preference = new DataPreference(getApplicationContext());
         initializeFavoriteVenue();
+        initializeLastKnownLocation();
     }
+
 
     private void initializeFavoriteVenue() {
         String venueID = preference.getVenueID();
@@ -28,7 +34,18 @@ public class StartUp extends Application {
         }
     }
 
-    public static FavoriteVenuePreference getPreference() {
+    public static DataPreference getPreference() {
         return preference;
+    }
+
+    private void initializeLastKnownLocation() {
+        Location location = preference.retriveLastKnownLocation();
+        Log.d(TAG, "initializeLastKnownLocation: "+location.getLatitude()+" "+location.getLongitude());
+        Location.Companion.setCurrent_latitude(location.getLatitude());
+        Location.Companion.setCurrent_longitude(location.getLongitude());
+    }
+
+    public static void setLocation(Location location) {
+        preference.saveCurrentLocation(location);
     }
 }

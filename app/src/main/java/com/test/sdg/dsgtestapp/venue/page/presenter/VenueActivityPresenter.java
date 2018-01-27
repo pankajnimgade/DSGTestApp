@@ -2,8 +2,8 @@ package com.test.sdg.dsgtestapp.venue.page.presenter;
 
 import android.util.Log;
 
-import com.test.sdg.dsgtestapp.first.page.model.Contact;
-import com.test.sdg.dsgtestapp.first.page.model.Venue;
+import com.test.sdg.dsgtestapp.dsg.app.model.classes.Contact;
+import com.test.sdg.dsgtestapp.dsg.app.model.classes.Venue;
 import com.test.sdg.dsgtestapp.venue.page.model.VenueActivityModel;
 import com.test.sdg.dsgtestapp.venue.page.view.IVenueActivity;
 import com.test.sdg.dsgtestapp.venue.page.view.VenueActivity;

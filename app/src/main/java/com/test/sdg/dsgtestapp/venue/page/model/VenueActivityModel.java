@@ -2,9 +2,9 @@ package com.test.sdg.dsgtestapp.venue.page.model;
 
 import android.util.Log;
 
-import com.test.sdg.dsgtestapp.first.page.model.Location;
-import com.test.sdg.dsgtestapp.first.page.model.Photo;
-import com.test.sdg.dsgtestapp.first.page.model.Venue;
+import com.test.sdg.dsgtestapp.dsg.app.model.classes.Location;
+import com.test.sdg.dsgtestapp.dsg.app.model.classes.Photo;
+import com.test.sdg.dsgtestapp.dsg.app.model.classes.Venue;
 import com.test.sdg.dsgtestapp.venue.page.presenter.VenueActivityPresenter;
 
 import java.util.List;

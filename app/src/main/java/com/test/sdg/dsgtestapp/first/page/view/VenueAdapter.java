@@ -16,7 +16,7 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.test.sdg.dsgtestapp.R;
-import com.test.sdg.dsgtestapp.first.page.model.Venue;
+import com.test.sdg.dsgtestapp.dsg.app.model.classes.Venue;
 import com.test.sdg.dsgtestapp.venue.page.view.VenueActivity;
 
 import java.util.List;

@@ -1,6 +1,6 @@
 package com.test.sdg.dsgtestapp.venue.page.view;
 
-import com.test.sdg.dsgtestapp.first.page.model.Contact;
+import com.test.sdg.dsgtestapp.dsg.app.model.classes.Contact;
 
 import java.util.List;
 

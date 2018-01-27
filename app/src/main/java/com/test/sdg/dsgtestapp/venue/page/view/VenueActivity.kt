@@ -16,8 +16,8 @@ import android.widget.TextView
 import com.google.gson.Gson
 import com.squareup.picasso.Picasso
 import com.test.sdg.dsgtestapp.R
-import com.test.sdg.dsgtestapp.first.page.model.Contact
-import com.test.sdg.dsgtestapp.first.page.model.Venue
+import com.test.sdg.dsgtestapp.dsg.app.model.classes.Contact
+import com.test.sdg.dsgtestapp.dsg.app.model.classes.Venue
 import com.test.sdg.dsgtestapp.venue.page.model.VenueActivityModel
 import com.test.sdg.dsgtestapp.venue.page.presenter.VenueActivityPresenter
 import kotlinx.android.synthetic.main.activity_venue.*

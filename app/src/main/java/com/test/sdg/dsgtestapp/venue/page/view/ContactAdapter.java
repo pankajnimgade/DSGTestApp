@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.test.sdg.dsgtestapp.R;
-import com.test.sdg.dsgtestapp.first.page.model.Contact;
+import com.test.sdg.dsgtestapp.dsg.app.model.classes.Contact;
 
 import java.util.List;
 

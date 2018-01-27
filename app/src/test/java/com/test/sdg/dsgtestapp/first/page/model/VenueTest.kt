@@ -1,6 +1,7 @@
 package com.test.sdg.dsgtestapp.first.page.model
 
 import android.util.Log
+import com.test.sdg.dsgtestapp.dsg.app.model.classes.Venue
 import org.junit.Test
 
 /**
