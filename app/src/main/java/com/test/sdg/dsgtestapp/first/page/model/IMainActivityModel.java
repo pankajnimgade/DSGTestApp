@@ -1,5 +1,6 @@
 package com.test.sdg.dsgtestapp.first.page.model;
 
+import com.test.sdg.dsgtestapp.dsg.app.model.classes.Venue;
 import com.test.sdg.dsgtestapp.first.page.presenter.MainActivityPresenter;
 
 /**
@@ -12,7 +13,9 @@ public interface IMainActivityModel {
 
     void setPresenter(MainActivityPresenter presenter);
 
-    void setFavoriteVenueID(String favoriteVenueID);
+    void setFavoriteVenue(Venue favoriteVenue);
+
+    void removeFavoriteVenue(Venue removeFavoriteVenue);
 
     String getFavoriteVenueID();
 

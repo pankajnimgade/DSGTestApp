@@ -3,39 +3,29 @@ package com.test.sdg.dsgtestapp.dsg.app.model.classes
 /**
  * Created by Pankaj Nimgade on 1/25/2018.
  */
-class Location(val latitude: Double, val longitude: Double
-) {
+class Location(val address: String,
+               val latitude: Double,
+               val longitude: Double,
+               val postalCode: String,
+               val cc: String,
+               val city: String,
+               val state: String,
+               val country: String) {
 
-    constructor(address: String,
-                latitude: Double,
-                longitude: Double,
-                postalCode: String,
-                cc: String,
-                city: String,
-                state: String,
-                country: String) : this(latitude = latitude, longitude = longitude)
+    constructor(latitude: Double, longitude: Double) :
+            this(
+                    address = "",
+                    latitude = latitude,
+                    longitude = longitude,
+                    postalCode = "",
+                    cc = "",
+                    city = "",
+                    state = "",
+                    country = ""
+            )
 
     companion object {
-        var current_latitude: Double = 0.0
-        var current_longitude: Double = 0.0
+        var current_latitude: Double = 40.448685
+        var current_longitude: Double = -80.239625
     }
-
-    var address: String = ""
-        get() = address
-
-    var postalCode: String = ""
-        get() = postalCode
-
-    var cc: String = ""
-        get() = cc
-
-    var city: String = ""
-        get() = city
-
-    var state: String = ""
-        get() = state
-
-    var country: String = ""
-        get() = country
-
 }

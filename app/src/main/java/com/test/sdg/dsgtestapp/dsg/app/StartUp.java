@@ -38,7 +38,7 @@ public class StartUp extends Application {
         return preference;
     }
 
-    private void initializeLastKnownLocation() {
+    private static void initializeLastKnownLocation() {
         Location location = preference.retriveLastKnownLocation();
         Log.d(TAG, "initializeLastKnownLocation: "+location.getLatitude()+" "+location.getLongitude());
         Location.Companion.setCurrent_latitude(location.getLatitude());
@@ -47,5 +47,6 @@ public class StartUp extends Application {
 
     public static void setLocation(Location location) {
         preference.saveCurrentLocation(location);
+        initializeLastKnownLocation();
     }
 }

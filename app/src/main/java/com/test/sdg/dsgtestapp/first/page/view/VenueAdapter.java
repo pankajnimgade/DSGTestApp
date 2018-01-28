@@ -44,7 +44,7 @@ public class VenueAdapter extends RecyclerView.Adapter<VenueAdapter.VenueViewHol
     }
 
     @Override
-    public void onBindViewHolder(VenueViewHolder holder, int position) {
+    public void onBindViewHolder(VenueViewHolder holder, final int position) {
         final Venue venue = venues.get(position);
         holder.nameTextView.setText(venue.getName());
         holder.ratingBar.setRating(venue.getRating() / 2);
@@ -66,24 +66,15 @@ public class VenueAdapter extends RecyclerView.Adapter<VenueAdapter.VenueViewHol
             }
         });
 
+        holder.favoriteCheckBox.setTag(venue);
+
         if (Venue.Companion.getHasFavorite()) {
             if (Venue.Companion.getFavoriteVenueId().equals(venue.getId())) {
                 holder.favoriteCheckBox.setChecked(true);
-            } else {
+            }else{
                 holder.favoriteCheckBox.setChecked(false);
             }
         }
-        holder.favoriteCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    Venue.Companion.setFavoriteVenueId(venue.getId());
-                    Venue.Companion.setHasFavorite(true);
-                    context.favoriteVenue(Venue.Companion.getFavoriteVenueId());
-                    notifyDataSetChanged();
-                }
-            }
-        });
     }
 
     @Override
@@ -107,12 +98,26 @@ public class VenueAdapter extends RecyclerView.Adapter<VenueAdapter.VenueViewHol
             ratingBar = itemView.findViewById(R.id.single_venue_in_list_ratingBar);
             ratingTextView = itemView.findViewById(R.id.single_venue_in_list_rating_textView);
             favoriteCheckBox = itemView.findViewById(R.id.single_venue_in_list_favorite_checkBox);
+
+            favoriteCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    Venue currentVenue = (Venue)buttonView.getTag();
+                    if (isChecked) {
+                        favoriteCheckBox.setChecked(true);
+                        context.saveFavoriteVenue(currentVenue);
+                    }else{
+                        favoriteCheckBox.setChecked(false);
+                        context.removeFavoriteVenue(currentVenue);
+                    }
+                }
+            });
         }
     }
 
     interface FavoriteVenue {
+        void saveFavoriteVenue(Venue favoriteVenue);
 
-        void favoriteVenue(String favoriteVenueID);
+        void removeFavoriteVenue(Venue removeFavoriteVenue);
     }
-
 }

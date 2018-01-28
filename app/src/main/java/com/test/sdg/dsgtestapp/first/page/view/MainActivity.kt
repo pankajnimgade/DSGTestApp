@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity(), VenueAdapter.FavoriteVenue {
     private val presenter = MainActivityPresenter(MainActivityModel())
 
     private lateinit var recyclerView: RecyclerView
+    private lateinit var venueAdapter: VenueAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,7 +42,6 @@ class MainActivity : AppCompatActivity(), VenueAdapter.FavoriteVenue {
     private fun initializeUI() {
         recyclerView = findViewById(R.id.MainActivity_venue_list_RecyclerView)
         fetchLastKnownLocation()
-
     }
 
 
@@ -82,15 +82,24 @@ class MainActivity : AppCompatActivity(), VenueAdapter.FavoriteVenue {
 
 
     fun loadInformation(venueList: List<Venue>) {
-        val venueAdapter = VenueAdapter(this, venueList)
+        venueAdapter = VenueAdapter(this, venueList)
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = venueAdapter
         venueAdapter.notifyDataSetChanged()
     }
 
-    override fun favoriteVenue(favoriteVenueID: String?) {
-        presenter.saveFavoriteStoreID(favoriteVenueID)
+    override fun saveFavoriteVenue(favoriteVenue: Venue?) {
+        presenter.saveFavoriteVenue(favoriteVenue)
+    }
+
+    override fun removeFavoriteVenue(removeFavoriteVenue: Venue?) {
+        presenter.removeFavoriteVenue(removeFavoriteVenue)
+    }
+
+    fun notifyListChange() {
+        recyclerView.post({ venueAdapter.notifyDataSetChanged() })
+
     }
 }
 

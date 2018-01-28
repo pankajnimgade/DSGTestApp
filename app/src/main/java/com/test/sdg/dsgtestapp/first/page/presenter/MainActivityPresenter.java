@@ -35,11 +35,19 @@ public class MainActivityPresenter {
     }
 
 
-    public void saveFavoriteStoreID(String favoriteVenueID) {
-        model.setFavoriteVenueID(favoriteVenueID);
+    public void saveFavoriteVenue(Venue favoriteVenue) {
+        model.setFavoriteVenue(favoriteVenue);
+    }
+
+    public void removeFavoriteVenue(Venue removeFavoriteVenue) {
+        model.removeFavoriteVenue(removeFavoriteVenue);
     }
 
     public String getVenueID() {
         return model.getFavoriteVenueID();
+    }
+
+    public void notifyListChange() {
+        view.notifyListChange();
     }
 }
