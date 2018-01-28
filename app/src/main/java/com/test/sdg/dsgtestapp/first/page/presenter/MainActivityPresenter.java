@@ -43,10 +43,6 @@ public class MainActivityPresenter {
         model.removeFavoriteVenue(removeFavoriteVenue);
     }
 
-    public String getVenueID() {
-        return model.getFavoriteVenueID();
-    }
-
     public void notifyListChange() {
         view.notifyListChange();
     }

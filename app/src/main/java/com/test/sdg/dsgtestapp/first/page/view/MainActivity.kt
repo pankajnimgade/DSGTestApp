@@ -16,9 +16,9 @@ import com.test.sdg.dsgtestapp.dsg.app.constants.Constants
 import com.test.sdg.dsgtestapp.dsg.app.constants.Constants.Companion.LOCATION_PERMISSION
 import com.test.sdg.dsgtestapp.dsg.app.model.classes.Location
 import com.test.sdg.dsgtestapp.dsg.app.model.classes.Venue
-import com.test.sdg.dsgtestapp.first.page.model.MainActivityModel
 import com.test.sdg.dsgtestapp.first.page.presenter.MainActivityPresenter
 import kotlinx.android.synthetic.main.activity_main.*
+import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(), VenueAdapter.FavoriteVenue {
 
@@ -26,7 +26,8 @@ class MainActivity : AppCompatActivity(), VenueAdapter.FavoriteVenue {
 
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
 
-    private val presenter = MainActivityPresenter(MainActivityModel())
+    @Inject
+    lateinit var presenter: MainActivityPresenter
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var venueAdapter: VenueAdapter
@@ -41,6 +42,7 @@ class MainActivity : AppCompatActivity(), VenueAdapter.FavoriteVenue {
 
     private fun initializeUI() {
         recyclerView = findViewById(R.id.MainActivity_venue_list_RecyclerView)
+        (application as StartUp).mainActivityComponent.inject(this)
         fetchLastKnownLocation()
     }
 
@@ -99,8 +101,5 @@ class MainActivity : AppCompatActivity(), VenueAdapter.FavoriteVenue {
 
     fun notifyListChange() {
         recyclerView.post({ venueAdapter.notifyDataSetChanged() })
-
     }
 }
-
-

@@ -6,6 +6,8 @@ import android.util.Log;
 import com.test.sdg.dsgtestapp.dsg.app.model.classes.Location;
 import com.test.sdg.dsgtestapp.dsg.app.model.classes.Venue;
 import com.test.sdg.dsgtestapp.dsg.app.preferences.DataPreference;
+import com.test.sdg.dsgtestapp.first.page.dagger.DaggerMainActivityComponent;
+import com.test.sdg.dsgtestapp.first.page.dagger.MainActivityComponent;
 
 /**
  * Created by Pankaj Nimgade on 1/26/2018.
@@ -17,14 +19,21 @@ public class StartUp extends Application {
 
     private static DataPreference preference;
 
+    private MainActivityComponent mainActivityComponent;
+
     @Override
     public void onCreate() {
         super.onCreate();
+        mainActivityComponent = DaggerMainActivityComponent.create();
+
         preference = new DataPreference(getApplicationContext());
         initializeFavoriteVenue();
         initializeLastKnownLocation();
     }
 
+    public MainActivityComponent getMainActivityComponent() {
+        return mainActivityComponent;
+    }
 
     private void initializeFavoriteVenue() {
         String venueID = preference.getVenueID();

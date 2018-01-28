@@ -54,10 +54,10 @@ data class Venue(val id: String,
         val distanceFromThisLocation = usersLastKnownLocation.distanceTo(thisObjectLocation)
         val distanceFromOtherLocation = usersLastKnownLocation.distanceTo(otherObjectLocation)
 
-        return if (distanceFromThisLocation > distanceFromOtherLocation) {
-            1
-        } else {
-            -1
+        if (distanceFromThisLocation > distanceFromOtherLocation) {
+            return 1
+        }  else if(distanceFromThisLocation < distanceFromOtherLocation){
+            return -1
         }
         return 0
     }
