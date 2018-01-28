@@ -6,6 +6,8 @@ import java.util.ArrayList;
 
 /**
  * Created by Pankaj Nimgade on 1/25/2018.
+ *
+ * Model class that represents Response json object in REST API
  */
 
 public class Response {

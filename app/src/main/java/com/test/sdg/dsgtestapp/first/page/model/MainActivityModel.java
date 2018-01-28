@@ -15,6 +15,9 @@ import java.util.List;
 
 /**
  * Created by Pankaj Nimgade on 1/25/2018.
+ * <p>
+ * This class provides the implementation of {@link IMainActivityModel} and
+ * {@link IMainActivityModel.VenueCollection}
  */
 
 public class MainActivityModel implements IMainActivityModel, IMainActivityModel.VenueCollection {

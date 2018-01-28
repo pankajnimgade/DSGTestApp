@@ -4,6 +4,8 @@ typealias AndroidLocation = android.location.Location
 
 /**
  * Created by Pankaj Nimgade on 1/25/2018.
+ *
+ * Model class that represents Venue json object in REST API
  */
 data class Venue(val id: String,
                  val name: String,

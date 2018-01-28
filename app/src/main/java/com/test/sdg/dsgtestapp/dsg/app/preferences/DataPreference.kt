@@ -6,6 +6,8 @@ import com.test.sdg.dsgtestapp.dsg.app.model.classes.Location
 
 /**
  * Created by Pankaj Nimgade on 1/26/2018.
+ *
+ * Used to save and retrieve and save venue and location info. etc...
  */
 class DataPreference {
 

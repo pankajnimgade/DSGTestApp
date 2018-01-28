@@ -2,6 +2,8 @@ package com.test.sdg.dsgtestapp.dsg.app.model.classes
 
 /**
  * Created by Pankaj Nimgade on 1/25/2018.
+ *
+ * Model class that represents Location json object in REST API
  */
 class Location(val address: String,
                val latitude: Double,

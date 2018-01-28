@@ -32,6 +32,9 @@ public class VenueActivityModel {
         populateUI();
     }
 
+    /**
+     * Populates Venue UI with is respective information
+     */
     private void populateUI() {
         if (venue != null) {
             populatePhoto();

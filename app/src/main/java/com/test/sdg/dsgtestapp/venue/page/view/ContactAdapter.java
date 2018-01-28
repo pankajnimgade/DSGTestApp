@@ -14,6 +14,8 @@ import java.util.List;
 
 /**
  * Created by Pankaj Nimgade on 1/26/2018.
+ *
+ * RecyclerView adapter used for Contact list associated with the Store
  */
 
 public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactViewHolder> {

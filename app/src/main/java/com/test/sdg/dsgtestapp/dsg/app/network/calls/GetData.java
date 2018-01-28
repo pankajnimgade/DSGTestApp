@@ -11,6 +11,8 @@ import okhttp3.Request;
 
 /**
  * Created by Pankaj Nimgade on 1/25/2018.
+ *
+ * This is Network call class to get Rest API response
  */
 
 public class GetData extends AsyncTask<Void, Void, String> {

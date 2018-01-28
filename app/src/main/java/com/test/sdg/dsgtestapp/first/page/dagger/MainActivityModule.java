@@ -11,6 +11,8 @@ import dagger.Provides;
 
 /**
  * Created by Pankaj Nimgade on 1/28/2018.
+ *
+ * Module class used by Dagger to inject underlying objects
  */
 
 @Module
