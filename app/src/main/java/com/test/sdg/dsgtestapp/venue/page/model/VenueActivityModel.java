@@ -31,7 +31,7 @@ import java.util.List;
 
 public class VenueActivityModel {
 
-    private static final String TAG = "VenueActivityModel";
+    private static final String TAG = VenueActivityModel.class.getSimpleName();
     private VenueActivityPresenter presenter;
     private Venue venue;
 
@@ -67,8 +67,7 @@ public class VenueActivityModel {
         List<Photo> photos = venue.getPhotos();
         if (photos != null && photos.size() > 0) {
             Photo firstPhoto = photos.get(0);
-            if (firstPhoto != null &&
-                    firstPhoto.getUrl() != null &&
+            if (firstPhoto != null && firstPhoto.getUrl() != null &&
                     !firstPhoto.getUrl().isEmpty()) {
                 Log.d(TAG, "populatePhoto: " + firstPhoto.getUrl());
                 if (presenter != null) {
@@ -79,8 +78,7 @@ public class VenueActivityModel {
     }
 
     private void populateStoreName() {
-        if (venue.getName() != null &&
-                !venue.getName().isEmpty()) {
+        if (venue.getName() != null && !venue.getName().isEmpty()) {
             presenter.setStoreName(venue.getName());
         }
     }

@@ -27,7 +27,7 @@ public class GetDataTest {
 
 
     @Test
-    public void testGetDataResponse() {
+    public void testGetData_Response() {
         System.out.println("Before Calling");
         GetData getData = new GetData("https://movesync-qa.dcsg.com/dsglabs/mobile/api/venue/",
                 new IMainActivityModel.VenueCollection() {

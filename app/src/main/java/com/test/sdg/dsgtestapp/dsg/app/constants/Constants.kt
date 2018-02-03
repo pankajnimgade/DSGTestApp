@@ -24,6 +24,6 @@ package com.test.sdg.dsgtestapp.dsg.app.constants
 class Constants{
 
     companion object {
-        val LOCATION_PERMISSION = 121
+        const val LOCATION_PERMISSION = 121
     }
 }

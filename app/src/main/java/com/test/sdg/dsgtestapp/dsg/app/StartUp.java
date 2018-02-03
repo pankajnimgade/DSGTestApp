@@ -70,7 +70,7 @@ public class StartUp extends Application {
      * Initializes last Known {@link Location} from shared preference if it exits
      */
     private static void initializeLastKnownLocation() {
-        Location location = preference.retriveLastKnownLocation();
+        Location location = preference.retrieveLastKnownLocation();
         Log.d(TAG, "initializeLastKnownLocation: "+location.getLatitude()+" "+location.getLongitude());
         Location.Companion.setCurrent_latitude(location.getLatitude());
         Location.Companion.setCurrent_longitude(location.getLongitude());

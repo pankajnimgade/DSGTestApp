@@ -40,17 +40,17 @@ public class MainActivityModel implements IMainActivityModel, IMainActivityModel
 
     private static final String TAG = "MainActivityModel";
 
-    private MainActivityPresenter presenter;
+    private MainActivityPresenter mPresenter;
 
-    private DataPreference preference;
-    private List<Venue> venueList;
+    private DataPreference mPreference;
+    private List<Venue> mVenueList;
 
     public MainActivityModel() {
-        preference = StartUp.getPreference();
+        mPreference = StartUp.getPreference();
     }
 
     public void setPresenter(MainActivityPresenter presenter) {
-        this.presenter = presenter;
+        this.mPresenter = presenter;
     }
 
 
@@ -64,18 +64,18 @@ public class MainActivityModel implements IMainActivityModel, IMainActivityModel
     public void getVenueCollection(String responseText) {
         Log.d(TAG, "getVenueCollection: \n" + responseText);
         if (responseText != null && !responseText.isEmpty()) {
-            venueList = (new Gson().fromJson(responseText, Response.class)).getVenues();
-            presenter.setVenueCollection(venueList);
+            mVenueList = (new Gson().fromJson(responseText, Response.class)).getVenues();
+            mPresenter.setVenueCollection(mVenueList);
             sortList();
         }else{
-            presenter.errorOccurred("Error# API Response");
+            mPresenter.errorOccurred("Error# API Response");
         }
-        System.out.println(venueList);
+        System.out.println(mVenueList);
     }
 
     @Override
     public void setFavoriteVenue(Venue favoriteVenue) {
-        preference.saveVenueId(favoriteVenue.getId());
+        mPreference.saveVenueId(favoriteVenue.getId());
         Venue.Companion.setFavoriteVenueId(favoriteVenue.getId());
         Venue.Companion.setHasFavorite(true);
         sortList();
@@ -92,26 +92,26 @@ public class MainActivityModel implements IMainActivityModel, IMainActivityModel
 
     @Override
     public String getFavoriteVenueID() {
-        return preference.getVenueID();
+        return mPreference.getVenueID();
     }
 
     @Override
     public void sortList() {
-        Collections.sort(venueList);
+        Collections.sort(mVenueList);
         if (Venue.Companion.getHasFavorite()) {
             int favoriteVenueIndex = 0;
-            for (int index = 0; index < venueList.size(); index++) {
-                if (venueList.get(index).getId().equals(Venue.Companion.getFavoriteVenueId())) {
+            for (int index = 0; index < mVenueList.size(); index++) {
+                if (mVenueList.get(index).getId().equals(Venue.Companion.getFavoriteVenueId())) {
                     favoriteVenueIndex = index;
                     break;
                 }
             }
             if (favoriteVenueIndex != 0) {
-                Venue favoriteVenue = venueList.remove(favoriteVenueIndex);
-                venueList.add(0, favoriteVenue);
+                Venue favoriteVenue = mVenueList.remove(favoriteVenueIndex);
+                mVenueList.add(0, favoriteVenue);
             }
         }
 
-        presenter.notifyListChange();
+        mPresenter.notifyListChange();
     }
 }

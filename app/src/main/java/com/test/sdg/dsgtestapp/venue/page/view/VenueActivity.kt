@@ -66,6 +66,9 @@ class VenueActivity : AppCompatActivity(), IVenueActivity {
         initializeUI()
     }
 
+    /**
+     * Initializes UI elements
+     */
     private fun initializeUI() {
         photo = findViewById(R.id.VenueActivity_photo_ImageView)
         storeNameTextView = findViewById(R.id.VenueActivity_store_name_ImageView)

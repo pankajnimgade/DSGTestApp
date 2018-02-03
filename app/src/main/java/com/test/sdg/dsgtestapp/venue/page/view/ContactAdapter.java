@@ -65,6 +65,9 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
         return contactList.size();
     }
 
+    /**
+     * Acts a ViewHolder for individual Venue item represented in a RecyclerView list
+     */
     public static class ContactViewHolder extends RecyclerView.ViewHolder {
 
         private TextView phoneTextView;

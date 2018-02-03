@@ -27,13 +27,13 @@ import com.test.sdg.dsgtestapp.dsg.app.model.classes.Location
  */
 class DataPreference {
 
-    private var sharedPreferences: SharedPreferences
-    private var editor: SharedPreferences.Editor
+    private var mSharedPreferences: SharedPreferences
+    private var mEditor: SharedPreferences.Editor
 
 
     constructor(context: Context) {
-        sharedPreferences = context.getSharedPreferences(VENUE_FILE, Context.MODE_PRIVATE)
-        editor = sharedPreferences.edit()
+        mSharedPreferences = context.getSharedPreferences(VENUE_FILE, Context.MODE_PRIVATE)
+        mEditor = mSharedPreferences.edit()
     }
 
     companion object {
@@ -44,26 +44,26 @@ class DataPreference {
     }
 
     fun saveVenueId(venueID: String) {
-        with(sharedPreferences.edit()) {
+        with(mSharedPreferences.edit()) {
             putString(VENUE_ID_KEY, venueID)
             commit()
         }
     }
 
     fun getVenueID(): String {
-        return sharedPreferences.getString(VENUE_ID_KEY, "")
+        return mSharedPreferences.getString(VENUE_ID_KEY, "")
     }
 
     fun saveCurrentLocation(location: Location) {
-        with(sharedPreferences.edit()) {
+        with(mSharedPreferences.edit()) {
             putFloat(LATITUDE_KEY, location.latitude.toFloat()).commit()
             putFloat(LONGITUDE_KEY, location.longitude.toFloat()).commit()
         }
     }
 
-    fun retriveLastKnownLocation(): Location {
-        val latitude = sharedPreferences.getFloat(LATITUDE_KEY, 0.0f)
-        val longitude = sharedPreferences.getFloat(LONGITUDE_KEY, 0.0f)
+    fun retrieveLastKnownLocation(): Location {
+        val latitude = mSharedPreferences.getFloat(LATITUDE_KEY, 0.0f)
+        val longitude = mSharedPreferences.getFloat(LONGITUDE_KEY, 0.0f)
         return Location(latitude = latitude.toDouble(), longitude = longitude.toDouble())
     }
 
