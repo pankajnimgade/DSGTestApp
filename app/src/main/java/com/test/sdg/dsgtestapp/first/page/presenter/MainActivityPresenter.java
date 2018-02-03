@@ -69,4 +69,11 @@ public class MainActivityPresenter {
     public void notifyListChange() {
         view.notifyListChange();
     }
+
+    /**
+     * notifies data set change after the sorting the list and favorite correction
+     */
+    public void errorOccurred(String errorMessage) {
+        view.showError(errorMessage);
+    }
 }

@@ -3,6 +3,7 @@ package com.test.sdg.dsgtestapp.first.page.view
 import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
@@ -31,6 +32,7 @@ class MainActivity : AppCompatActivity(), VenueAdapter.FavoriteVenue {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var venueAdapter: VenueAdapter
+    private lateinit var messageSnackbar: Snackbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +43,8 @@ class MainActivity : AppCompatActivity(), VenueAdapter.FavoriteVenue {
     }
 
     private fun initializeUI() {
+        messageSnackbar = Snackbar.make(findViewById(R.id.MainActivity_root_CoordinatorLayout), "",
+                Snackbar.LENGTH_SHORT)
         recyclerView = findViewById(R.id.MainActivity_venue_list_RecyclerView)
         (application as StartUp).mainActivityComponent.inject(this)
         fetchLastKnownLocation()
@@ -101,5 +105,9 @@ class MainActivity : AppCompatActivity(), VenueAdapter.FavoriteVenue {
 
     fun notifyListChange() {
         recyclerView.post({ venueAdapter.notifyDataSetChanged() })
+    }
+
+    fun showError(errorMessage: String) {
+        messageSnackbar.setText(errorMessage).show()
     }
 }

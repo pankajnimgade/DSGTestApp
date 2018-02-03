@@ -1,6 +1,7 @@
 package com.test.sdg.dsgtestapp.dsg.app.network.calls;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.test.sdg.dsgtestapp.first.page.model.IMainActivityModel;
 
@@ -17,6 +18,7 @@ import okhttp3.Request;
 
 public class GetData extends AsyncTask<Void, Void, String> {
 
+    private static final String TAG = GetData.class.getSimpleName();
     private String url;
     final private IMainActivityModel.VenueCollection venueCollection;
 
@@ -35,6 +37,7 @@ public class GetData extends AsyncTask<Void, Void, String> {
             resultantResponse = okHttpClient.newCall(request).execute().body().string();
         } catch (IOException e) {
             e.printStackTrace();
+            Log.e(TAG, "doInBackground: "+e.getMessage());
         }
         return resultantResponse;
     }
@@ -42,6 +45,10 @@ public class GetData extends AsyncTask<Void, Void, String> {
     @Override
     protected void onPostExecute(String resultantResponse) {
         super.onPostExecute(resultantResponse);
-        this.venueCollection.getVenueCollection(resultantResponse);
+        if (resultantResponse != null) {
+            this.venueCollection.getVenueCollection(resultantResponse);
+        }else{
+            //error occurred
+        }
     }
 }
